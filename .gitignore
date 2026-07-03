@@ -1,3 +1,7 @@
 node_modules/
 .DS_Store
 *.log
+server.js
+package.json
+package-lock.json
+genie-coverage.html
