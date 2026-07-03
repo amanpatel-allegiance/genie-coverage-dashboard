@@ -9,29 +9,36 @@
 <style>
 body{font-family:system-ui,-apple-system,sans-serif}
 .hero{background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 60%,#1d4ed8 100%)}
-.card{background:#fff;border-radius:14px;box-shadow:0 1px 4px rgba(0,0,0,.08),0 4px 16px rgba(0,0,0,.06)}
+.card{background:#fff;border-radius:14px;box-shadow:0 1px 4px rgba(0,0,0,.07),0 4px 16px rgba(0,0,0,.05)}
 .stat-box{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:1.25rem}
 .bar-track{height:8px;background:#e2e8f0;border-radius:9999px;overflow:hidden}
-.bar-fill{height:8px;border-radius:9999px;transition:width .8s ease}
-.pill{display:inline-block;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:8px;padding:3px 10px;font-size:.78rem;margin:3px;color:#334155}
+.bar-fill{height:8px;border-radius:9999px;transition:width .9s ease}
 .tag{display:inline-flex;align-items:center;border-radius:9999px;padding:3px 11px;font-size:.78rem;font-weight:500;margin:3px}
 .tag-blue{background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe}
 .tag-green{background:#f0fdf4;color:#166534;border:1px solid #86efac}
 .tag-purple{background:#faf5ff;color:#6b21a8;border:1px solid #d8b4fe}
 .tag-orange{background:#fff7ed;color:#9a3412;border:1px solid #fdba74}
 .chip{display:inline-flex;align-items:center;gap:5px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:4px 10px;font-size:.77rem;margin:3px;color:#374151}
-.tab{padding:7px 18px;border-radius:9999px;font-size:.84rem;font-weight:500;cursor:pointer;transition:all .15s;color:#64748b;border:none;background:transparent}
-.tab.on{background:#1d4ed8;color:#fff}
-.tab:not(.on):hover{background:#f1f5f9}
 .dev-row:hover{background:#f8fafc}
+.badge{background:#dbeafe;color:#1d4ed8;border-radius:9999px;padding:2px 10px;font-size:.72rem;font-weight:600}
+/* Accordion */
+.acc-header{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;cursor:pointer;border-radius:12px;transition:background .15s;user-select:none}
+.acc-header:hover{background:#f8fafc}
+.acc-body{display:none;padding:0 18px 16px}
+.acc-body.open{display:block}
+.acc-chevron{transition:transform .25s;color:#94a3b8;flex-shrink:0}
+.acc-chevron.open{transform:rotate(180deg)}
+.acc-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.d-item{padding:6px 10px;font-size:.82rem;color:#374151;border-radius:7px;transition:background .12s}
+.d-item:hover{background:#eff6ff;color:#1d4ed8}
+.d-item.match{background:#fef3c7;color:#92400e;font-weight:500}
 input[type=text]{border:1.5px solid #e2e8f0;border-radius:9px;padding:9px 14px;font-size:.88rem;width:100%;outline:none;transition:border-color .2s}
 input[type=text]:focus{border-color:#1d4ed8;box-shadow:0 0 0 3px rgba(29,78,216,.1)}
-.badge{background:#dbeafe;color:#1d4ed8;border-radius:9999px;padding:2px 10px;font-size:.72rem;font-weight:600}
 </style>
 </head>
 <body class="bg-slate-50 min-h-screen">
 
-<!-- HERO HEADER -->
+<!-- HERO -->
 <div class="hero text-white">
   <div class="max-w-6xl mx-auto px-5 py-8">
     <div class="flex items-center justify-between flex-wrap gap-3 mb-7">
@@ -45,45 +52,26 @@ input[type=text]:focus{border-color:#1d4ed8;box-shadow:0 0 0 3px rgba(29,78,216,
         <span class="text-blue-400">Live from Genie API</span>
       </div>
     </div>
-
-    <!-- STAT BOXES -->
     <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
-      <div class="stat-box text-center">
-        <div class="text-3xl font-bold">7</div>
-        <div class="text-blue-200 text-xs mt-1">Emirates</div>
-      </div>
-      <div class="stat-box text-center">
-        <div class="text-3xl font-bold">403</div>
-        <div class="text-blue-200 text-xs mt-1">Districts</div>
-      </div>
-      <div class="stat-box text-center">
-        <div class="text-3xl font-bold">533</div>
-        <div class="text-blue-200 text-xs mt-1">Developers</div>
-      </div>
-      <div class="stat-box text-center">
-        <div class="text-3xl font-bold">169</div>
-        <div class="text-blue-200 text-xs mt-1">Amenities</div>
-      </div>
-      <div class="stat-box text-center">
-        <div class="text-3xl font-bold">8</div>
-        <div class="text-blue-200 text-xs mt-1">Property Types</div>
-      </div>
+      <div class="stat-box text-center"><div class="text-3xl font-bold">7</div><div class="text-blue-200 text-xs mt-1">Emirates</div></div>
+      <div class="stat-box text-center"><div class="text-3xl font-bold">403</div><div class="text-blue-200 text-xs mt-1">Districts</div></div>
+      <div class="stat-box text-center"><div class="text-3xl font-bold">533</div><div class="text-blue-200 text-xs mt-1">Developers</div></div>
+      <div class="stat-box text-center"><div class="text-3xl font-bold">169</div><div class="text-blue-200 text-xs mt-1">Amenities</div></div>
+      <div class="stat-box text-center"><div class="text-3xl font-bold">8</div><div class="text-blue-200 text-xs mt-1">Property Types</div></div>
     </div>
   </div>
 </div>
 
-<!-- MAIN CONTENT -->
+<!-- CONTENT -->
 <div class="max-w-6xl mx-auto px-5 py-7 space-y-6">
 
-  <!-- ROW 1: Emirates bars + Donut -->
+  <!-- Bars + Donut -->
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
-
     <div class="card p-6">
       <h2 class="font-semibold text-gray-900 mb-1">Coverage by Emirate</h2>
       <p class="text-gray-400 text-sm mb-5">Districts tracked per emirate</p>
       <div id="emirateBars" class="space-y-4"></div>
     </div>
-
     <div class="card p-6 flex flex-col">
       <h2 class="font-semibold text-gray-900 mb-1">District Share</h2>
       <p class="text-gray-400 text-sm mb-3">Proportion of UAE districts covered</p>
@@ -93,49 +81,43 @@ input[type=text]:focus{border-color:#1d4ed8;box-shadow:0 0 0 3px rgba(29,78,216,
     </div>
   </div>
 
-  <!-- ROW 2: Districts browser -->
+  <!-- Districts Accordion -->
   <div class="card p-6">
-    <div class="flex items-center justify-between flex-wrap gap-3 mb-4">
+    <div class="flex items-center justify-between flex-wrap gap-3 mb-5">
       <div>
-        <h2 class="font-semibold text-gray-900">Districts Directory</h2>
-        <p class="text-gray-400 text-sm">All <strong>403</strong> districts — filter by emirate or search</p>
+        <h2 class="font-semibold text-gray-900">Districts by Emirate</h2>
+        <p class="text-gray-400 text-sm">403 districts — click an emirate to expand, or search below</p>
       </div>
-      <input type="text" id="dSearch" placeholder="Search districts…" style="max-width:240px" oninput="filterD()"/>
+      <div style="max-width:260px;width:100%">
+        <input type="text" id="dSearch" placeholder="Search any district…" oninput="searchDistricts()"/>
+      </div>
     </div>
-    <div id="dTabs" class="flex flex-wrap gap-2 mb-4"></div>
-    <div id="dGrid" class="flex flex-wrap"></div>
-    <p id="dNone" class="hidden text-gray-400 text-sm mt-2">No districts match.</p>
+    <div id="accordion" class="space-y-2 divide-y divide-gray-100"></div>
+    <p id="dNone" class="hidden text-gray-400 text-sm mt-3 text-center py-4">No districts match your search.</p>
   </div>
 
-  <!-- ROW 3: Top Developers -->
+  <!-- Top Developers -->
   <div class="card p-6">
     <h2 class="font-semibold text-gray-900 mb-1">Top Developers on Genie</h2>
     <p class="text-gray-400 text-sm mb-4">Ranked by number of listed projects</p>
     <div id="devList" class="space-y-2"></div>
   </div>
 
-  <!-- ROW 4: Property types + Amenities -->
+  <!-- Property Types + Amenities -->
   <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-
     <div class="card p-6">
       <h2 class="font-semibold text-gray-900 mb-4">Property Data Tracked</h2>
-
-      <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Property Types</p>
+      <p class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">Property Types</p>
       <div id="unitTypes" class="mb-4"></div>
-
-      <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Bedroom Configs</p>
+      <p class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">Bedroom Configurations</p>
       <div id="unitLayouts" class="mb-4"></div>
-
-      <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Finish Levels</p>
+      <p class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">Finish Levels</p>
       <div id="finishes" class="mb-4"></div>
-
-      <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Special Features</p>
+      <p class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">Special Features</p>
       <div id="unitFeatures" class="mb-4"></div>
-
-      <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Building Config Types</p>
+      <p class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">Building Config Types</p>
       <div id="configTypes"></div>
     </div>
-
     <div class="card p-6">
       <div class="flex items-center justify-between mb-3">
         <h2 class="font-semibold text-gray-900">Amenities Tracked</h2>
@@ -147,9 +129,7 @@ input[type=text]:focus{border-color:#1d4ed8;box-shadow:0 0 0 3px rgba(29,78,216,
     </div>
   </div>
 
-  <p class="text-center text-gray-300 text-xs pb-4">
-    Genie Map Coverage Dashboard &nbsp;•&nbsp; Allegiance Real Estate &nbsp;•&nbsp; Internal use only
-  </p>
+  <p class="text-center text-gray-300 text-xs pb-4">Genie Map Coverage &nbsp;•&nbsp; Allegiance Real Estate &nbsp;•&nbsp; Internal use only</p>
 </div>
 
 <script>
@@ -160,79 +140,107 @@ const COLORS = {
   'Ajman':'#d97706','Ras Al Khaimah':'#dc2626','Al Fujairah':'#db2777','Umm Al Quwain':'#0891b2'
 };
 
-// Emirate bars
 const sorted = [...D.emirates].sort((a,b)=>
-  (D.districtsByEmirate[b.name]||[]).length - (D.districtsByEmirate[a.name]||[]).length);
-const maxD = sorted[0] ? (D.districtsByEmirate[sorted[0].name]||[]).length : 1;
+  (D.districtsByEmirate[b.name]||[]).length-(D.districtsByEmirate[a.name]||[]).length);
+
+// Emirate bars
+const maxD = (D.districtsByEmirate[sorted[0]?.name]||[]).length||1;
 const barsEl = document.getElementById('emirateBars');
 sorted.forEach(e=>{
-  const cnt = (D.districtsByEmirate[e.name]||[]).length;
-  const pct = Math.round(cnt/maxD*100);
-  const col = COLORS[e.name]||'#64748b';
-  barsEl.innerHTML += `<div>
+  const cnt=(D.districtsByEmirate[e.name]||[]).length;
+  const col=COLORS[e.name]||'#64748b';
+  barsEl.innerHTML+=`<div>
     <div class="flex justify-between text-sm mb-1">
       <span class="font-medium text-gray-700">${e.name}</span>
       <span class="font-semibold text-gray-900">${cnt} <span class="text-gray-400 font-normal">districts</span></span>
     </div>
-    <div class="bar-track"><div class="bar-fill" style="width:${pct}%;background:${col}"></div></div>
+    <div class="bar-track"><div class="bar-fill" style="width:${Math.round(cnt/maxD*100)}%;background:${col}"></div></div>
   </div>`;
 });
 
-// Donut
+// Donut chart
 new Chart(document.getElementById('donut'),{
   type:'doughnut',
   data:{
-    labels: sorted.map(e=>e.name),
+    labels:sorted.map(e=>e.name),
     datasets:[{
-      data: sorted.map(e=>(D.districtsByEmirate[e.name]||[]).length),
-      backgroundColor: sorted.map(e=>COLORS[e.name]||'#64748b'),
-      borderWidth:2, borderColor:'#fff'
+      data:sorted.map(e=>(D.districtsByEmirate[e.name]||[]).length),
+      backgroundColor:sorted.map(e=>COLORS[e.name]||'#64748b'),
+      borderWidth:2,borderColor:'#fff'
     }]
   },
   options:{plugins:{legend:{position:'bottom',labels:{font:{size:11},padding:10,usePointStyle:true}}},cutout:'65%'}
 });
 
-// Districts
-let activeEmirate = 'All';
-const dGrid = document.getElementById('dGrid');
-const dNone = document.getElementById('dNone');
-const dTabs = document.getElementById('dTabs');
+// ── ACCORDION ──
+const accordion = document.getElementById('accordion');
 
-function buildTabs(){
-  const all = Object.values(D.districtsByEmirate).flat().length;
-  dTabs.innerHTML = `<button class="tab on" onclick="setE('All',this)">All (${all})</button>`;
-  sorted.forEach(e=>{
-    const cnt=(D.districtsByEmirate[e.name]||[]).length;
-    dTabs.innerHTML+=`<button class="tab" onclick="setE('${e.name}',this)">${e.name} (${cnt})</button>`;
+function buildAccordion(filterQ=''){
+  const q = filterQ.toLowerCase();
+  accordion.innerHTML='';
+  let anyMatch = false;
+
+  sorted.forEach((e,idx)=>{
+    const allNames = D.districtsByEmirate[e.name]||[];
+    const names = q ? allNames.filter(n=>n.toLowerCase().includes(q)) : allNames;
+    if(q && names.length===0) return;
+    anyMatch = true;
+
+    const col = COLORS[e.name]||'#64748b';
+    const open = q || idx===0; // auto-open on search or first emirate (Dubai)
+    const id = 'acc_'+e.name.replace(/\s/g,'_');
+
+    const div = document.createElement('div');
+    div.className='border border-gray-100 rounded-xl overflow-hidden';
+    div.innerHTML=`
+      <div class="acc-header" onclick="toggleAcc('${id}')">
+        <div class="flex items-center gap-3">
+          <span class="acc-dot" style="background:${col}"></span>
+          <span class="font-semibold text-gray-800">${e.name}</span>
+          <span class="text-xs text-gray-400 font-normal">${names.length} district${names.length!==1?'s':''}</span>
+        </div>
+        <svg id="${id}_chev" class="acc-chevron ${open?'open':''} w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+        </svg>
+      </div>
+      <div id="${id}" class="acc-body ${open?'open':''}">
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-1 pt-1 pb-2">
+          ${names.map(n=>{
+            const highlight = q && n.toLowerCase().includes(q);
+            return `<div class="d-item ${highlight?'match':''}">${
+              highlight ? n.replace(new RegExp(q,'gi'), m=>`<mark style="background:#fde68a;border-radius:3px;padding:0 2px">${m}</mark>`) : n
+            }</div>`;
+          }).join('')}
+        </div>
+      </div>`;
+    accordion.appendChild(div);
   });
+
+  document.getElementById('dNone').classList.toggle('hidden', anyMatch);
 }
-function setE(name, btn){
-  activeEmirate=name;
-  document.getElementById('dSearch').value='';
-  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
-  btn.classList.add('on');
-  filterD();
+
+function toggleAcc(id){
+  const body = document.getElementById(id);
+  const chev = document.getElementById(id+'_chev');
+  const isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  chev.classList.toggle('open', !isOpen);
 }
-function filterD(){
-  const q=document.getElementById('dSearch').value.toLowerCase();
-  let names = activeEmirate==='All'
-    ? Object.values(D.districtsByEmirate).flat()
-    : (D.districtsByEmirate[activeEmirate]||[]);
-  if(q) names=names.filter(n=>n.toLowerCase().includes(q));
-  dGrid.innerHTML=names.map(n=>`<span class="pill">${n}</span>`).join('');
-  dNone.classList.toggle('hidden',names.length>0);
+
+function searchDistricts(){
+  buildAccordion(document.getElementById('dSearch').value);
 }
-buildTabs();
-filterD();
+
+buildAccordion(); // initial render
 
 // Developers
-const devEl = document.getElementById('devList');
-const maxP = D.topDevelopers[0]?.projects||1;
+const devEl=document.getElementById('devList');
+const maxP=D.topDevelopers[0]?.projects||1;
 D.topDevelopers.forEach((d,i)=>{
   const pct=Math.round(d.projects/maxP*100);
-  const logo = d.logo
-    ? `<img src="${d.logo}" class="w-8 h-8 rounded-lg object-contain bg-gray-50 border border-gray-100" onerror="this.outerHTML='<div class=\'w-8 h-8 rounded-lg bg-blue-100 text-blue-700 text-xs font-bold flex items-center justify-center\'>${d.name[0]}</div>'">`
-    : `<div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 text-xs font-bold flex items-center justify-center">${d.name[0]}</div>`;
+  const logo=d.logo
+    ?`<img src="${d.logo}" class="w-8 h-8 rounded-lg object-contain bg-gray-50 border border-gray-100" onerror="this.style.display='none'">`
+    :`<div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 text-xs font-bold flex items-center justify-center">${d.name[0]}</div>`;
   devEl.innerHTML+=`<div class="dev-row flex items-center gap-3 p-3 rounded-lg">
     <span class="text-gray-300 text-xs w-5 text-right shrink-0">${i+1}</span>
     ${logo}
@@ -246,19 +254,19 @@ D.topDevelopers.forEach((d,i)=>{
   </div>`;
 });
 
-// Tags helper
-function tags(elId, items, cls){
-  document.getElementById(elId).innerHTML=items.map(x=>`<span class="tag ${cls}">${x.name}</span>`).join('');
+// Tags
+function tags(id,items,cls){
+  document.getElementById(id).innerHTML=items.map(x=>`<span class="tag ${cls}">${x.name}</span>`).join('');
 }
-tags('unitTypes',      D.unitTypes,         'tag-blue');
-tags('unitLayouts',    D.unitLayouts,        'tag-blue');
-tags('finishes',       D.finishes,           'tag-green');
-tags('unitFeatures',   D.unitFeatures,       'tag-purple');
-tags('configTypes',    D.configurationTypes, 'tag-orange');
+tags('unitTypes',     D.unitTypes,          'tag-blue');
+tags('unitLayouts',   D.unitLayouts,        'tag-blue');
+tags('finishes',      D.finishes,           'tag-green');
+tags('unitFeatures',  D.unitFeatures,       'tag-purple');
+tags('configTypes',   D.configurationTypes, 'tag-orange');
 
 // Amenities
-const aList = document.getElementById('aList');
-const aNone = document.getElementById('aNone');
+const aList=document.getElementById('aList');
+const aNone=document.getElementById('aNone');
 function renderA(items){
   aList.innerHTML=items.map(a=>`<span class="chip">
     <svg class="w-3 h-3 text-blue-400 shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -267,9 +275,9 @@ function renderA(items){
 }
 function filterA(){
   const q=document.getElementById('aSearch').value.toLowerCase();
-  const filtered=q?D.amenities.filter(a=>a.name.toLowerCase().includes(q)):D.amenities;
-  renderA(filtered);
-  aNone.classList.toggle('hidden',filtered.length>0);
+  const f=q?D.amenities.filter(a=>a.name.toLowerCase().includes(q)):D.amenities;
+  renderA(f);
+  aNone.classList.toggle('hidden',f.length>0);
 }
 renderA(D.amenities);
 </script>
